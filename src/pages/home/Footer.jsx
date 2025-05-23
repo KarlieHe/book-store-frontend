@@ -1,0 +1,38 @@
+import { Link } from "react-router"
+
+const Footer = () => {
+  return (
+    <footer className="bg-primary">
+
+     <div className="flex justify-between max-w-screen-2xl mx-auto px-4 py-16 z-10 space-x-60">
+     <div className="">
+      <h2 className="text-3xl font-primary font-regular">Bookstore</h2>
+      <p className="text-xl font-primary font-regular mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     </div>
+      <div>
+        <h3 className="text-lg font-primary whitespace-nowrap">Book categories</h3>
+        <ul className="text-xl font-primary space-y-4 mt-6">
+          <li className="underline whitespace-nowrap"><Link to='/books/fiction'>Fiction</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/books/business'>Business</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/books/horror'>Horror</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/books/adventure'>Adventure</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/books'>All</Link></li>
+        </ul>
+      </div>
+      <div>
+        <h3 className="text-lg font-primary whitespace-nowrap">Customer Service</h3>
+        <ul className="text-xl font-primary space-y-4 mt-6">
+          <li className="underline whitespace-nowrap"><Link to='/'>FAQs</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/'>Contact Us</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/'>Delivery and Click & Collect</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/'>Returns & Exchanges</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/'>Track My Order</Link></li>
+          <li className="underline whitespace-nowrap"><Link to='/'>About Us</Link></li>
+        </ul>
+      </div>
+     </div>
+    </footer>
+  )
+}
+
+export default Footer
