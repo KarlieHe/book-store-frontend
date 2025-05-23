@@ -2,7 +2,7 @@ import { UserCircleIcon } from "@heroicons/react/24/outline"
 import { useForm } from "react-hook-form"
 import { useEffect } from "react"
 import { useGetUserQuery, useUpdateUserMutation, useUpdatePasswordMutation } from "../../redux/features/auth/authApi"
-import PasswordInput from "../../components/passwordInput"
+import PasswordInput from "../../components/PasswordInput"
 
 const Profile = () => {
   const { data: user, isLoading, error } = useGetUserQuery();
