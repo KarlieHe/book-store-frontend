@@ -61,8 +61,8 @@ const Navbar = () => {
 
 
   return (
-    <header className='max-w-screen-2xl mx-auto px-4 py-6 z-10'>
-        <div className='flex justify-between items-center'>
+    <header className="bg-white py-6 z-10 w-full">
+        <div className="flex justify-between items-center max-w-screen-2xl mx-auto pb-4 px-4 ">
           {/* Left side */}
           <div className='flex justify-start items-center md:space-x-16 space-x-2'>
             <button onClick={toggleDrawer}>
@@ -79,7 +79,7 @@ const Navbar = () => {
                   placeholder='What are you looking for?'
                   onChange={(e) => setSearchInput(e.target.value)}
                   value={searchInput} 
-                  className='items-center pl-2 pr-3 bg-transparent md:w-[400px] text-xs text-secondary border-none focus:outline-none'/>                
+                  className='items-center pl-2 pr-3 bg-transparent w-[100px] md:w-[400px] text-xs text-secondary border-none focus:outline-none'/>                
               </div>
 
               {searchInput && !searchLoading && searchResult.length > 0 && (
@@ -152,13 +152,26 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className={`flex justify-between items-center mt-6 bg-primary ${isMenuOpen ? 'block' : 'hidden'}`}> 
-          <div className='flex items-center'>
-            <Link to='/' className='text-secondary font-regular text-md p-4 hover:bg-secondary hover:text-white'>Homepage</Link>
-            <Link to='/books' className='text-secondary font-regular text-md p-4 hover:bg-secondary hover:text-white'>Books</Link>
-            <Link to='/aboutUs' className='text-secondary font-regular text-md p-4 hover:bg-secondary hover:text-white'>About Us</Link>
+        {isMenuOpen && (
+          <div className="bg-primary">
+            <div className="flex flex-row max-w-screen-2xl mx-auto">
+              {[
+                { to: '/', label: 'Homepage' },
+                { to: '/books', label: 'Books' },
+                { to: '/aboutUs', label: 'About Us' },
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-white font-regular text-md p-4 hover:bg-secondary hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
+
 
 
     </header>

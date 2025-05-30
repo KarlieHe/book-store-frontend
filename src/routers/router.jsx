@@ -20,7 +20,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import AddBook from "../pages/dashboard/AddBook";
 
 import CustomerLayout from "../layouts/CustomerLayout";
-import Profile from "../pages/users/Profile";
+import MyAccount from "../pages/users/MyAccount";
 import OrderList from "../pages/users/OrderList";
 import OrderDetails from "../pages/users/OrderDetails";
 
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         path: "/customer",
         element: <CustomerLayout />,
         children: [
-          { path: "profile", element: <Profile /> },
+          { path: "profile", element: <MyAccount /> },
           { path: "orders", element: <OrderList /> },
           { path: "orders/:id", element: <OrderDetails /> }, // Assuming you want to view a specific order
           // Add more customer-related pages here

@@ -27,9 +27,9 @@ const Cart = () => {
         <h2 className="text-4xl font-primary font-regular text-center">
             Shopping Cart &#40;{totalQuantity} items&#41;
         </h2>
-        <hr className="border-t-1 border-black w-1/4 mt-4 mx-auto mb-20" />
-        <div className="grid lg:grid-cols-3 items-start gap-10 p-10">
-            <div className="lg:col-span-2 flex flex-col items-center md:items-start rounded-3xl shadow-lg p-6">
+        <hr className="border-t-1 border-black w-1/2 md:w-1/4 mt-4 mx-auto" />
+        <div className="grid lg:grid-cols-3 items-start gap-10 p-4">
+            <div className="lg:col-span-2 flex flex-col items-center md:items-start rounded-3xl shadow-lg p-4 md:p-6">
                 {cartItems.length === 0 && (
                     <div className="flex flex-col items-start justify-center">
                         <h3 className="text-2xl font-secondary font-regular text-center">Your cart is empty</h3>
@@ -44,7 +44,7 @@ const Cart = () => {
                     {cartItems.map((cartItem, index) => (
                     <CartItem key={index} cartItem={cartItem} />
                     ))}
-                    <p className="text-3xl font-secondary font-regular]">
+                    <p className="text-lg md:text-3xl font-secondary font-regular">
                         Subtotal &#40;{totalQuantity} items&#41;&#58;&nbsp;
                         <span className="font-bold">&#36;{subtotalAmount}</span>
                     </p>

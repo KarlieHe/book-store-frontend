@@ -15,7 +15,7 @@ const BookCard1 = ({book}) => {
     // console.log("book", book)
     
   return (
-    <div className="flex items-center w-auto px-3 rounded-md bg-white gap-3">
+    <div className="flex items-center w-auto px-3 rounded-md gap-3 bg-background">
         <Link to={`/book/${book._id}`} className="flex-shrink-0">
             <img
             src={getImgUrl(book?.image_url)}

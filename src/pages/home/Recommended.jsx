@@ -18,8 +18,8 @@ const Recommended = () => {
 
 
   return (
-    <div className='mt-16'>
-        <h2 className='font-bold font-primary text-3xl md:text-5xl mb-10'>Popular</h2>
+    <div className='py-8'>
+        <h2 className='font-bold font-primary text-3xl md:text-5xl mb-10'>Recommended</h2>
 
         <div className='flex flex-col space-x-0 md:flex-row md:space-x-6'>
             <Swiper

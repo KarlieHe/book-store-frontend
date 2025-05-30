@@ -27,10 +27,10 @@ const ShippingForm = () => {
   }, [user, setValue]);
 
   return (
-    <div className="bg-white py-6 px-16 rounded-3xl shadow-lg">
+    <div className="bg-white py-6 px-4 md:px-16 rounded-3xl shadow-lg">
           <h3 className="text-3xl font-secondary font-regular">Shipping information</h3>
-          <div className="flex space-x-4 mb-6 mt-6 ">
-              <label className="cursor-pointer w-1/2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-4">
+              <label className="cursor-pointer">
                 <input 
                   type="radio" 
                   {...register("shippingMethod", { required: true })} 
@@ -42,7 +42,7 @@ const ShippingForm = () => {
                   <span>Delivery</span>
                 </div>
               </label>
-              <label className="cursor-pointer w-1/2">
+              <label className="cursor-pointer">
                 <input 
                   type="radio" 
                   {...register("shippingMethod", { required: true })}
@@ -53,9 +53,13 @@ const ShippingForm = () => {
                   <span>Pickup</span>
                 </div>
               </label>
+              <p className="text-sm text-discount md:col-span-2">
+                Please provide your shipping address for delivery. If you choose pickup, you can collect your order from our store At <strong>XXX Street, Melbourne, VIC 3000</strong>.
+              </p>
           </div>
-          <div>
-            <div>
+
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+            <div className="md:col-span-3">
               <label className="block text-md font-regular text-gray-900">First name</label>
               <input
                 {...register("firstName", { required: "First name is required" })}
@@ -63,7 +67,7 @@ const ShippingForm = () => {
               />
               {errors.firstName && <p className="text-red-500 text-xs">{errors.firstName.message}</p>}
             </div>
-            <div className="mt-4">
+            <div className="md:col-span-3">
               <label className="block text-md font-regular text-gray-900">Surname</label>
               <input
                 {...register("surname", { required: "Surname is required" })}
@@ -71,7 +75,7 @@ const ShippingForm = () => {
               />
               {errors.surname && <p className="text-red-500 text-xs">{errors.surname.message}</p>}
             </div>
-            <div className="mt-4">
+            <div className="md:col-span-3">
               <label className="block text-md font-regular text-gray-900">Email address</label>
               <input
                 {...register("email", {
@@ -85,7 +89,7 @@ const ShippingForm = () => {
               />
               {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
             </div>
-            <div className="mt-4">
+            <div className="md:col-span-3">
               <label className="block text-md font-regular text-gray-900">Mobile</label>
               <input
                 {...register("mobile", { 
@@ -100,7 +104,7 @@ const ShippingForm = () => {
               />
               {errors.mobile && <p className="text-red-500 text-xs">{errors.mobile.message}</p>}
             </div>
-            <div className="mt-4">
+            <div className="md:col-span-6">
               <label className="block text-md font-regular text-gray-900">Street</label>
               <input
                 {...register("street", { required: "Street is required" })}
@@ -108,29 +112,28 @@ const ShippingForm = () => {
               />
               {errors.street && <p className="text-red-500 text-xs">{errors.street.message}</p>}
             </div>
-            <div className="grid md:grid-cols-3 mt-4 space-x-4">
-              <div className="">
-                <label className="block text-md font-regular text-gray-900">Suburb</label>
-                <input
-                  {...register("suburb", { required: "Suburb is required" })}
-                  className="block w-full mt-2 rounded-md border bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6"
-                />
-                {errors.suburb && <p className="text-red-500 text-xs">{errors.suburb.message}</p>}
+            <div className="md:col-span-2">
+              <label className="block text-md font-regular text-gray-900">Suburb</label>
+              <input
+                {...register("suburb", { required: "Suburb is required" })}
+                className="block w-full mt-2 rounded-md border bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6"
+              />
+              {errors.suburb && <p className="text-red-500 text-xs">{errors.suburb.message}</p>}
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-md font-regular text-gray-900">State</label>
+              <select className="block w-full mt-2 rounded-md border bg-white px-3 py-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6"
+                {...register("state", { required: "State is required" })}>
+                <option value="">State/territory</option>
+                {AUStates.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+              {errors.state && <p className="text-red-500 text-xs">{errors.state.message}</p>}
               </div>
-              <div>
-                <label className="block text-md font-regular text-gray-900">State</label>
-                <select className="block w-full mt-2 rounded-md border bg-white px-3 py-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6"
-                 {...register("state", { required: "State is required" })}>
-                  <option value="">State/territory</option>
-                  {AUStates.map((state) => (
-                    <option key={state} value={state}>
-                      {state}
-                    </option>
-                  ))}
-                </select>
-                {errors.state && <p className="text-red-500 text-xs">{errors.state.message}</p>}
-              </div>
-              <div className="">
+              <div className="md:col-span-2">
                 <label className="block text-md font-regular text-gray-900">Post code</label>
                 <input
                   {...register("postCode", { 
@@ -144,7 +147,6 @@ const ShippingForm = () => {
                 />
                 {errors.postCode && <p className="text-red-500 text-xs">{errors.postCode.message}</p>}
               </div>
-            </div>
           </div>
     </div>
   )

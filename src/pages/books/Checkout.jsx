@@ -40,7 +40,7 @@ const Checkout = () => {
       <hr className="border-t-1 border-black w-1/4 mt-4 mx-auto mb-4" />
 
       <form 
-        className="grid lg:grid-cols-2 items-start gap-10"
+        className="grid grid-cols-1 lg:grid-cols-2 items-start gap-6 lg:gap-10"
          onSubmit={handleSubmit(onSubmit)} 
          noValidate
       >

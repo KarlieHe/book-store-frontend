@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 export default function CustomerLayout() {
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Sidebar */}
       <aside className=" bg-white p-6 rounded-3xl shadow-lg">
         <div className="space-y-6">

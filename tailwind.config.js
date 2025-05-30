@@ -7,12 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#FFCE1A",
-        "secondary": "#0D0842",
-        "background": "#FEF3E2",
+        "primary": "#b07c3c",
+        "secondary": "#0D0D0D",
+        "background": "#FFFFFF",
         "webBG": "#FFFFFF",
         "mobileBG": "#F3F3F3",
-        "favorite": "#FF5841",
+        "favorite": "#A64029",
+        "Label": "#8C6658",
         "discount": "#6C6C6C",
         "textColorForDarkBG": "#FFFFF8"
       },

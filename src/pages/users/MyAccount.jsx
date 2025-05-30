@@ -108,10 +108,10 @@ const Profile = () => {
       </form>
 
       {/* Change password section */}
-      <hr className="border-t-1 border-gray-300 my-12" />
       <div>
+        <hr className="border-t-1 border-gray-300 my-12" />
         <h2 className="text-xl font-secondary font-bold">Change Password</h2>
-        <form className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handlePasswordSubmit(onPasswordSubmit)}>
+        <form className="grid grid grid-cols-1 md:grid-cols-2 gap-6 mt-8" onSubmit={handlePasswordSubmit(onPasswordSubmit)}>
           <PasswordInput
             label="Current Password"
             name="currentPassword"
@@ -126,8 +126,7 @@ const Profile = () => {
             error={errorsPassword.newPassword}
           />
 
-          <div></div>
-          <button type="submit" className="px-8 py-2 rounded-md self-end bg-primary">
+          <button type="submit" className="md:col-start-2 px-8 py-2 rounded-md self-end bg-primary">
             {isUpdatingPassword ? "Changing..." : "Change Password"}
           </button>
         </form>

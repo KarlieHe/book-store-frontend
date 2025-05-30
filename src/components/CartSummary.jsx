@@ -5,7 +5,7 @@ const CartSummary = ({cartItems, subtotalAmount, shippingRate, discount, totalAm
 
 
   return (
-    <div className="bg-white py-6 px-16 rounded-3xl shadow-lg">
+    <div className="bg-white py-6 px-4 md:px-16 rounded-3xl shadow-lg">
         <h3 className="text-3xl font-secondary font-regular">Review your cart</h3>
         <div className="space-y-4 mt-4">
             {cartItems.map((cartItem, index) => (
@@ -13,11 +13,11 @@ const CartSummary = ({cartItems, subtotalAmount, shippingRate, discount, totalAm
             ))}
         </div>
 
-        <div className="flex flex-col md:flex-row space-x-10 mt-4 mb-4 space-y-4 md:space-y-0">
+        <div className="grid grid-cols-3 my-4 gap-4 md:gap-6">
             <input 
             placeholder="Discount code" 
-            className="flex-2 border-2 rounded-md font-regular py-2 px-4 w-3/4" />
-            <button className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-regular py-2 px-4 rounded-md w-1/4">Apply</button>
+            className="col-span-2 border-2 rounded-md font-regular py-2 px-4" />
+            <button className="col-span-1 bg-blue-500 hover:bg-blue-600 text-white font-regular py-2 px-4 rounded-md">Apply</button>
         </div>
 
         <div className="space-y-1 text-md">
@@ -42,9 +42,9 @@ const CartSummary = ({cartItems, subtotalAmount, shippingRate, discount, totalAm
         <button type="submit" className="w-full bg-primary text-lg py-2 mt-4 rounded-md text-black hover:bg-amber-400">
             Go to payment
         </button>
-        {/* <p className="text-sm text-gray-500 mt-4 flex items-center space-x-2">
+        <p className="text-sm text-gray-500 mt-4 text-center space-x-2">
             <span className="text-blue-600 font-semibold">Secure Checkout - SSL Encrypted</span>
-        </p>  */}
+        </p> 
 
    
     </div>

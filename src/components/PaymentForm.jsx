@@ -132,6 +132,9 @@ const PaymentForm = () => {
       </button>
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
+      <p className="text-sm text-gray-500 mt-4 text-center space-x-2">
+            <span className="text-blue-600 font-semibold">Secure Checkout - SSL Encrypted</span>
+        </p> 
     </form>
   )
 }

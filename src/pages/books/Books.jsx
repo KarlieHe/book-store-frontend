@@ -31,13 +31,13 @@ const Books = () => {
   };
 
   return (
-    <div className="flex flex-col p-4">
-        <div className='flex-grow mb-6'>
-            <div className="px-6 py-6">
+    <div className="flex flex-col">
+        <div className='grow mb-6'>
+            <div className="pl-4 pb-4">
                 <h1 className="text-3xl font-primary font-semibold">Books</h1>
             </div>
 
-            <div className="flex justify-between items-center mb-6 mt-3">
+            <div className="flex justify-between items-center mb-6 mt-3 pl-4">
                 <div className="space-x-4">
                 <label className="mr-2">Filter by:</label>
                 <select className="border px-2 py-1 rounded" onChange={handleCategoryChange}>
@@ -60,7 +60,7 @@ const Books = () => {
                 </div>
             </div>
 
-            <div id="book-grid" className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div id="book-grid" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4">
                 {!isLoading &&
                 !error &&
                 filteredBooks.length > 0 &&
@@ -69,14 +69,16 @@ const Books = () => {
                     .map((book, index) => <BookCard2 key={index} book={book} />)}
             </div>
         </div>
-      {/* 分页控件 */}
-      {totalPages > 1 && (
-        <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPageChange={(page) => setPage(page)}
-        />
-        )}
+        {/* 分页控件 */}
+        <div className='mt-auto'>
+          {totalPages > 1 && (
+            <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={(page) => setPage(page)}
+            />
+            )}
+        </div>
 
 
     </div>

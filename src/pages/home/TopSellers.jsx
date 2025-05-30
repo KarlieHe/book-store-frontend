@@ -26,7 +26,7 @@ const TopSellers = () => {
 
 
   return (
-    <div className='mt-8'>
+    <div className='py-8'>
         <div className='font-bold font-primary text-3xl md:text-5xl mb-10'>
             <h2>Top</h2>
             <h2>Seller</h2>
