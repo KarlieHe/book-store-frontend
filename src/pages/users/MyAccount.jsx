@@ -111,7 +111,7 @@ const Profile = () => {
       <div>
         <hr className="border-t-1 border-gray-300 my-12" />
         <h2 className="text-xl font-secondary font-bold">Change Password</h2>
-        <form className="grid grid grid-cols-1 md:grid-cols-2 gap-6 mt-8" onSubmit={handlePasswordSubmit(onPasswordSubmit)}>
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8" onSubmit={handlePasswordSubmit(onPasswordSubmit)}>
           <PasswordInput
             label="Current Password"
             name="currentPassword"
