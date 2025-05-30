@@ -1,4 +1,4 @@
-import { Bars3CenterLeftIcon, HeartIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { Bars3CenterLeftIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { Link, useNavigate } from 'react-router'
 import { useState } from 'react'
 import { useDebounce } from '../hooks/useDebounce';
@@ -15,7 +15,7 @@ import { useFetchBooksQuery } from '../redux/features/books/booksApi';
 import userImg from '../assets/avatar.png'
 
 const navigation = [
-  {name: "Profile", href:"/customer/profile"},
+  {name: "My Account", href:"/customer/profile"},
   {name: "Orders", href:"/customer/orders"},
   {name: "Cart Page", href:"/cart"},
 ]
@@ -66,7 +66,7 @@ const Navbar = () => {
           {/* Left side */}
           <div className='flex justify-start items-center md:space-x-16 space-x-2'>
             <button onClick={toggleDrawer}>
-              <Bars3CenterLeftIcon className='size-6 text-secondary' />
+              <Bars3CenterLeftIcon className={`size-6  ${isMenuOpen ? 'text-primary' : 'text-secondary'}`} />
             </button>
             
             {/* Search Bar */}
@@ -100,7 +100,7 @@ const Navbar = () => {
           </div>
           {/* Right side */}
           <div className='flex justify-end items-center md:space-x-6 space-x-2'>
-            {/* <div className='flex'> */}
+            <div className='relative'>
               {currentUser ? 
               <>
                   <button className='w-12' onClick={() =>setIsDropDownOpen(!isDropDownOpen)}>
@@ -113,24 +113,24 @@ const Navbar = () => {
                   {/* dropdowns */}
                   {
                     isDropDownOpen && (
-                        <div className='absolute md:right-16 right-0 mt-52 w-48 bg-white shadow-lg rounded-lg z-30'>
-                        <ul className='py-2'>
-                            {
-                            navigation.map((item) => (
-                                <li key={item.name} onClick={() => {
-                                setIsDropDownOpen(false)}}>
-                                <Link to={item.href} className='block text-sm px-4 py-2 hover:bg-gray-100'>
-                                    {item.name}
-                                </Link>
-                                </li>
-                            ))
-                            }
-                            <li>
-                                <button
-                                onClick={handleLogOut}
-                                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Logout</button>
-                            </li>
-                        </ul>
+                        <div className='absolute mt-2 w-48 bg-white shadow-lg rounded-lg z-30'>
+                          <ul className='py-2'>
+                              {
+                              navigation.map((item) => (
+                                  <li key={item.name} onClick={() => {
+                                  setIsDropDownOpen(false)}}>
+                                  <Link to={item.href} className='block text-sm px-4 py-2 hover:bg-gray-100'>
+                                      {item.name}
+                                  </Link>
+                                  </li>
+                              ))
+                              }
+                              <li>
+                                  <button
+                                  onClick={handleLogOut}
+                                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Logout</button>
+                              </li>
+                          </ul>
                         </div>
                     )
                   }
@@ -139,10 +139,10 @@ const Navbar = () => {
                   <UserIcon className='size-6 text-secondary' />
               </Link>
               }
-            {/* </div> */}
-            <Link to='/' className='hidden sm:block'>
+            </div>
+            {/* <Link to='/' className='hidden sm:block'>
               <HeartIcon className='size-6 text-secondary' />
-            </Link>
+            </Link> */}
             <Link to='/cart' className='bg-primary text-textColorForDarkBG w-full flex justify-center px-4 py-1 text-xs items-center gap-2 font-bold border-none rounded-lg'>
               <ShoppingCartIcon className='size-5'/>
               {
