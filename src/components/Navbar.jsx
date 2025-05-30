@@ -99,8 +99,8 @@ const Navbar = () => {
             </div>
           </div>
           {/* Right side */}
-          <div className='flex justify-end items-center md:space-x-6 space-x-2'>
-            <div className='relative'>
+          <div className='flex justify-end items-center space-x-2'>
+            <div className='relative p-1'>
               {currentUser ? 
               <>
                   <button className='w-12' onClick={() =>setIsDropDownOpen(!isDropDownOpen)}>
