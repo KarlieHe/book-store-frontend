@@ -10,6 +10,7 @@ import Checkout from "../pages/books/Checkout";
 import PaymentPage from "../pages/books/PaymentPage";
 import OrderCompletePage from "../pages/books/OrderCompletePage";
 import Books from "../pages/books/Books";
+import ErrorPage from "../pages/ErrorPage";
 
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import Orders from "../pages/dashboard/Orders";
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/books/:genre?", element: <Books /> },
