@@ -16,10 +16,10 @@ export const BookCard2 = ({ book}) => {
                   <p className="text-xs md:text-sm font-extralight text-gray-500 italic line-clamp-2">
                       {book.authors.length > 0 ? (
                       book.authors.map((author, index) => (
-                          <a key={author.name} className="">
+                          <Link key={author.name} className="">
                           {author.name}
                           {index < book.authors.length - 1 && ", "}
-                          </a>
+                          </Link>
                       ))
                       ) : (
                       "Unknown author"

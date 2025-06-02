@@ -2,6 +2,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useRegisterUserMutation } from '../redux/features/auth/authApi';
+import { Link } from 'react-router';
 
 const Register = () => {
 
@@ -71,9 +72,9 @@ const Register = () => {
               <div className="flex items-center justify-between">
                 <label className="block text-sm/6 font-medium text-gray-900">Password</label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  <Link to={'#'} className="font-semibold text-indigo-600 hover:text-indigo-500">
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <input
@@ -105,9 +106,9 @@ const Register = () => {
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Not a member?{' '}
-            <a href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link to={"/login"} className="font-semibold text-indigo-600 hover:text-indigo-500">
               Sign in now
-            </a>
+            </Link>
           </p>
         </div>
       </div>

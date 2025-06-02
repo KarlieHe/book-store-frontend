@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import { useEffect } from "react"
 
 const OrderCompletePage = () => {
@@ -31,10 +31,10 @@ const OrderCompletePage = () => {
       <p className="text-lg text-center mt-2">Your order has been successfully processed.</p>
 
       <div className="text-center mt-6">
-        <a href="/" className="bg-primary text-white py-2 px-4 rounded-md hover:bg-blue-600">Continue Shopping</a>
+        <Link to={"/"} className="bg-primary text-white py-2 px-4 rounded-md hover:bg-blue-600">Continue Shopping</Link>
       </div>
       {/* <div className="text-center mt-4">
-        <a href="/orders" className="text-blue-600 hover:underline">View Your Orders</a>  
+        <Link to={"/orders"} className="text-blue-600 hover:underline">View Your Orders</Link>  
       </div> */}
     </div>
   )

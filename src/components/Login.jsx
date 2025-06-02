@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 import { useLoginUserMutation } from '../redux/features/auth/authApi'; 
 
@@ -53,9 +53,9 @@ function Login() {
               <div className="flex items-center justify-between">
                 <label className="block text-sm/6 font-medium text-gray-900">Password</label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  <Link to="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <input
@@ -85,9 +85,9 @@ function Login() {
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Not a member?{' '}
-            <a href="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link to={'/register'} className="font-semibold text-indigo-600 hover:text-indigo-500">
               Sign up now
-            </a>
+            </Link>
           </p>
         </div>
       </div>

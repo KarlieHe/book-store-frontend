@@ -31,7 +31,7 @@ const Books = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-8">
         <div className='grow mb-6'>
             <div className="pl-4 pb-4">
                 <h1 className="text-3xl font-primary font-semibold">Books</h1>

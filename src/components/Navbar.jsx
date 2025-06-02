@@ -1,5 +1,5 @@
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { Link, useNavigate } from 'react-router'
+import { Link, NavLink, useNavigate } from 'react-router'
 import { useState } from 'react'
 import { useDebounce } from '../hooks/useDebounce';
 import { UserIcon } from "@heroicons/react/24/outline";
@@ -160,13 +160,17 @@ const Navbar = () => {
                 { to: '/books', label: 'Books' },
                 { to: '/aboutUs', label: 'About Us' },
               ].map((link) => (
-                <Link
+                <NavLink
                   key={link.to}
                   to={link.to}
-                  className="text-white font-regular text-md p-4 hover:bg-secondary hover:text-white"
+                  className={({ isActive }) =>
+                    `text-white font-regular text-md p-4 hover:bg-secondary ${
+                    isActive ? 'bg-secondary' : 'bg-primary'
+                    }`
+                  }
                 >
                   {link.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
