@@ -1,33 +1,35 @@
 import { useEffect, useState } from 'react';
 import { useFetchBooksQuery } from '../../redux/features/books/booksApi';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { categories } from '../../utils/constants';
 import { BookCard2 } from '../../components/BookCard2';
 import Pagination from '../../components/Pagination';
 
 const Books = () => {
   const { genre } = useParams();
-  const [category, setCategory] = useState(genre || '');
+  const CapitalizedGenre = genre ? genre.charAt(0).toUpperCase() + genre.slice(1) : 'All';
+  const [selectedGenre, setSelectedGenre] = useState(CapitalizedGenre); // Default to 'All' if genre is not provided
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
 
   const { data, isLoading, error } = useFetchBooksQuery({
-    genre: category.toLowerCase(),
+    genre: selectedGenre === 'All' ? '' : selectedGenre.toLowerCase(),
     page,
   });
   
   useEffect(() => {
-    setCategory(genre || '');
+    setSelectedGenre(CapitalizedGenre);
     setPage(1); 
-  }, [genre]);
+  }, [CapitalizedGenre]);
 
   const filteredBooks = Object.values(data?.entities || {});
   const totalPages = data?.pagination.totalPages || 1;
 
   const handleCategoryChange = (e) => {
     const selected = e.target.value;
-    setCategory(selected === 'All' ? '' : selected);
-    setPage(1); 
+    const finalCategory = selected === 'All' ? '' : selected.toLowerCase();
+    navigate(`/books/${finalCategory}`); 
   };
 
   return (
@@ -40,10 +42,16 @@ const Books = () => {
             <div className="flex justify-between items-center mb-6 mt-3 pl-4">
                 <div className="space-x-4">
                 <label className="mr-2">Filter by:</label>
-                <select className="border px-2 py-1 rounded" onChange={handleCategoryChange}>
-                    {categories.map((c, index) => (
-                    <option key={index} value={c}>{c}</option>
-                    ))}
+                <select
+                  value={selectedGenre} // this makes the selected option match the state
+                  onChange={handleCategoryChange}
+                  className="border px-2 py-1 rounded"
+                >
+                  {categories.map((c, index) => (
+                    <option key={index} value={c}>
+                      {c}
+                    </option>
+                  ))}
                 </select>
                 {/* <select className="border px-2 py-1 rounded">
                     <option>Price</option>
