@@ -4,7 +4,7 @@ import { setCredentials, clearCredentials } from './authSlice';
 
 export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-
+        
         registerUser: builder.mutation({
             query: (userData) => ({
                 url: "/users/register",
