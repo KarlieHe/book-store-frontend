@@ -1,5 +1,8 @@
 # Bookies | MERN Book Store Frontend
 
+Website URL: https://book-store-pied-psi.vercel.app/
+Backend Repository: https://github.com/KarlieHe/book-store-backend
+
 A modern online bookstore frontend built with React, Redux Toolkit, and Tailwind CSS. This project is part of a MERN stack application.
 
 ## Tech Stack
