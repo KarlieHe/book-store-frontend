@@ -35,6 +35,7 @@ const Profile = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) {
+    // navigate('/login');
     console.error("Error fetching user data:", error);
     return <div>Error fetching user data</div>;
   }

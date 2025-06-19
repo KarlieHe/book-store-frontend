@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 const CartItem = ({cartItem}) => {
     const dispatch = useDispatch();
-    console.log("CartItem", cartItem);
+    // console.log("CartItem", cartItem);
 
     const handleIncrease = () => {
         if (cartItem.cartQuantity < cartItem.stock) {

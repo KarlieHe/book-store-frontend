@@ -2,7 +2,7 @@ import bannerImg from '../../assets/banner.png'
 
 const Banner = () => {
   return (
-    <div className='flex md:flex-row-reverse flex-col justify-between items-center gap-20'>
+    <div className='flex md:flex-row-reverse flex-col justify-between items-center gap-20 pt-8'>
 
         <div className='md:w-2/4 w-full flex md:justify-end justify-center items-center'>
             <img src={bannerImg} alt='Banner Image' />

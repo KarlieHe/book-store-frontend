@@ -36,7 +36,7 @@ const SingleBook = () => {
             <span className="mx-2">{'>'}</span>
           </li>
           <li>
-            <Link a={"/books"} className="hover:underline text-black">Books</Link>
+            <Link to={"/books"} className="hover:underline text-black">Books</Link>
             <span className="mx-2">{'>'}</span>
           </li>
           <li className="text-gray-500">{book.title}</li>
@@ -97,7 +97,7 @@ const SingleBook = () => {
                 <label htmlFor="stock-select" className="text-md font-thin font-secondary">Stock:</label>
                 <select 
                   id="stock-select" 
-                  className="p-2 border border-gray-300 rounded-md text-md font-thin font-secondary focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="p-3 w-28 border border-gray-300 rounded-md text-md font-thin font-secondary focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={qty}
                   onChange={(e) => setQty(Number(e.target.value))}
                 >
@@ -111,7 +111,7 @@ const SingleBook = () => {
               </div>
               <div className="shrink">
                 <AddToCartBtn 
-                  btnClass="!px-8 !py-2 !text-white !rounded-md hover:!bg-secondary transition-colors duration-300"
+                  btnClass="!px-10 !py-2 !rounded-md !bg-transparent border-2 text-primary border-primary hover:!bg-primary transition-colors duration-300"
                   book={book} 
                   cartQuantity={qty}/>
                 </div>

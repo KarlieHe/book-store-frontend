@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 export const BookCard2 = ({ book}) => {
   return (
-    <div className="overflow-hidden hover:shadow-lg flex flex-col px-4 lg:px-6 py-4 lg:py-6">
+    <div className="overflow-hidden hover:shadow-lg flex flex-col px-0 lg:px-6 py-4 lg:py-6">
         <Link to={`/book/${book._id}`} className="flex-shrink-0">
             <div className="">
                 <img src={`${getImgUrl(book?.image_url)}`}  alt={book?.title} className="w-full object-cover" />
