@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFetchBooksQuery } from '../../redux/features/books/booksApi';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate, Link } from 'react-router';
 import { categories } from '../../utils/constants';
 import { BookCard2 } from '../../components/BookCard2';
 import Pagination from '../../components/Pagination';
@@ -34,6 +34,15 @@ const Books = () => {
 
   return (
     <div className="flex flex-col pb-8">
+      <nav className="text-sm text-gray-600 space-x-1 py-8">
+          <ol className="list-reset flex md:text-lg">
+            <li>
+              <Link to={"/"} className="hover:underline text-black">Home</Link>
+              <span className="mx-2">{'>'}</span>
+            </li>
+            <li className="text-gray-500">Books</li>
+          </ol>
+        </nav>
         <div className='grow mb-6'>
             <div className="pl-4 pb-4">
                 <h1 className="text-3xl font-primary font-semibold">Books</h1>
@@ -68,7 +77,7 @@ const Books = () => {
                 </div>
             </div>
 
-            <div id="book-grid" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4">
+            <div id="book-grid" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-x-2 md:gap-x-4">
                 {!isLoading &&
                 !error &&
                 filteredBooks.length > 0 &&
