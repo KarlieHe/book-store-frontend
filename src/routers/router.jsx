@@ -24,6 +24,7 @@ import CustomerLayout from "../layouts/CustomerLayout";
 import MyAccount from "../pages/users/MyAccount";
 import OrderList from "../pages/users/OrderList";
 import OrderDetails from "../pages/users/OrderDetails";
+import AboutUs from "../pages/about/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { path: "/order-success", element: <OrderCompletePage /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/aboutUs", element: <AboutUs /> },
       {
         path: "/customer",
         element: <CustomerLayout />,
