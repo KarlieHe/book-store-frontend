@@ -1,26 +1,16 @@
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { Link, NavLink, useNavigate } from 'react-router'
-import { useState } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router'
+import { useEffect, useState } from 'react'
 import { useDebounce } from '../hooks/useDebounce';
-import { UserIcon } from "@heroicons/react/24/outline";
 
-import { useLogoutUserMutation } from '../redux/features/auth/authApi';
-import { getCurrentUserAuth } from '../redux/features/auth/authSlice';
 import { useSelector } from 'react-redux';
-import { clearCart } from '../redux/features/cart/cartSlice';
-import { useDispatch } from 'react-redux';
 import { useFetchBooksQuery } from '../redux/features/books/booksApi';
 
+import ProfileBtn from './ProfileBtn';
 
-import userImg from '../assets/avatar.png'
-
-const navigation = [
-  {name: "My Account", href:"/customer/profile"},
-  {name: "Orders", href:"/customer/orders"},
-  {name: "Cart Page", href:"/cart"},
-]
 
 const Navbar = () => {
+  // State to manage search input and results
     const [searchInput, setSearchInput] = useState('');
     const debouncedSearch = useDebounce(searchInput, 500);
     const { data, isLoading: searchLoading } = useFetchBooksQuery({ search: debouncedSearch }, {
@@ -28,28 +18,25 @@ const Navbar = () => {
     });
     const searchResult = Object.values(data?.entities || {})
 
-    const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  // State to manage dropdown and menu visibility
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
+    // close menu on route change
+    useEffect(() => {
+      setIsMenuOpen(false); 
+    }, [location.pathname]);
+    // Prevent scroll behind the menu
+    useEffect(() => {
+      document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    }, [isMenuOpen]);
+    
 
     const toggleDrawer = () => {
       setIsMenuOpen((prev) => !prev);
     };
 
-    const [logoutUser] = useLogoutUserMutation();
-
-    let currentUser = useSelector(getCurrentUserAuth);
-
     const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    const handleLogOut = async () => {
-      await logoutUser().unwrap();
-      dispatch(clearCart());
-      setIsDropDownOpen(false);
-      navigate('/');
-    }
 
     const handleSelect = (book) => {
       navigate(`/book/${book._id}`);
@@ -58,11 +45,12 @@ const Navbar = () => {
     // const handleSearchInput = () => {
     //   navigate(`books?search=${encodeURIComponent(searchInput)}`, { state: { searchResult } });
     // }
+    
 
 
   return (
-    <header className="bg-white py-6 z-10 w-full">
-        <div className="flex justify-between items-center max-w-screen-2xl mx-auto pb-4 px-4 ">
+    <div className="w-full">
+        <div className="flex justify-between items-center max-w-screen-2xl mx-auto px-2 py-4 md:px-4 ">
           {/* Left side */}
           <div className='flex justify-start items-center md:space-x-16 space-x-2'>
             <button onClick={toggleDrawer}>
@@ -71,7 +59,7 @@ const Navbar = () => {
             
             {/* Search Bar */}
             <div className='relative'>
-              <div className='flex bg-[#EAEAEA] px-2 py-1 rounded-lg gap-1 items-center'>
+              <div className='flex bg-[#EAEAEA] px-2 py-1 rounded-lg gap-1'>
                 <MagnifyingGlassIcon className='size-5 text-secondary'/>
                 <input 
                   name='searchBox' 
@@ -100,49 +88,7 @@ const Navbar = () => {
           </div>
           {/* Right side */}
           <div className='flex justify-end items-center space-x-2'>
-            <div className='relative p-1'>
-              {currentUser ? 
-              <>
-                  <button className='w-12' onClick={() =>setIsDropDownOpen(!isDropDownOpen)}>
-                    <img 
-                        src={userImg} 
-                        alt='user' 
-                        className={`size-6 rounded-full ${currentUser ? 'ring-2 ring-blue-500' : ''}`} 
-                    />
-                  </button>
-                  {/* dropdowns */}
-                  {
-                    isDropDownOpen && (
-                        <div className='absolute mt-2 w-48 bg-white shadow-lg rounded-lg z-30'>
-                          <ul className='py-2'>
-                              {
-                              navigation.map((item) => (
-                                  <li key={item.name} onClick={() => {
-                                  setIsDropDownOpen(false)}}>
-                                  <Link to={item.href} className='block text-sm px-4 py-2 hover:bg-gray-100'>
-                                      {item.name}
-                                  </Link>
-                                  </li>
-                              ))
-                              }
-                              <li>
-                                  <button
-                                  onClick={handleLogOut}
-                                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Logout</button>
-                              </li>
-                          </ul>
-                        </div>
-                    )
-                  }
-              </> : 
-              <Link to='/login'>
-                  <UserIcon className='size-6 text-secondary' />
-              </Link>
-              }
-            </div>
-            {/* <Link to='/' className='hidden sm:block'>
-              <HeartIcon className='size-6 text-secondary' />
-            </Link> */}
+            <ProfileBtn />
             <Link to='/cart' className='bg-primary text-textColorForDarkBG w-full flex justify-center px-4 py-1 text-xs items-center gap-2 font-bold border-none rounded-lg'>
               <ShoppingCartIcon className='size-5'/>
               {
@@ -153,32 +99,41 @@ const Navbar = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="bg-primary">
-            <div className="flex flex-row max-w-screen-2xl mx-auto">
-              {[
-                { to: '/', label: 'Homepage' },
-                { to: '/books', label: 'Books' },
-                { to: '/aboutUs', label: 'About Us' },
-              ].map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  className={({ isActive }) =>
-                    `text-white font-regular text-md p-4 hover:bg-secondary ${
-                    isActive ? 'bg-secondary' : 'bg-primary'
-                    }`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
+          <div className="fixed top-[159px] left-0 right-0 bottom-0 bg-black bg-opacity-50 z-30"></div>
+        )}
+
+        {isMenuOpen && (
+          <div className="bg-webBG shadow-md">
+            <div className='flex flex-col max-w-screen-2xl mx-auto'>
+            <hr className='border-t border-primary' />
+              <div className="flex flex-row">
+                  {[
+                    { to: '/', label: 'Homepage' },
+                    { to: '/books', label: 'Books' },
+                    { to: '/aboutUs', label: 'About Us' },
+                  ].map((link) => (
+                    <NavLink
+                      key={link.to}
+                      to={link.to}
+                      className={({ isActive }) =>
+                        `text-secondary font-regular text-md p-4 hover:bg-primary hover:text-white ${
+                        isActive ? 'bg-primary text-white' : 'bg-webBG'
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+
             </div>
+
           </div>
         )}
 
 
 
-    </header>
+    </div>
   )
 }
 
