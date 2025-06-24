@@ -1,6 +1,7 @@
 # Bookies | MERN Book Store Frontend
 
 Website URL: https://book-store-pied-psi.vercel.app/
+
 ⏳ Please Note:
 The backend may take up to 50 seconds to load due to hosting limitations.
 
