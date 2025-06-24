@@ -8,6 +8,7 @@ The backend may take up to 50 seconds to load due to hosting limitations.
 This delay happens because the server is hosted on Render's free tier, which automatically puts the service to sleep after 15 minutes of inactivity. When a new request comes in, the server needs time to spin back up, causing the delay.
 
 Thank you for your patience!
+
 Backend Repository: https://github.com/KarlieHe/book-store-backend
 
 A modern online bookstore frontend built with React, Redux Toolkit, and Tailwind CSS. This project is part of a MERN stack application.
