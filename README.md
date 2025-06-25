@@ -1,6 +1,8 @@
 # Bookies | MERN Book Store Frontend
 
-![Homepage] (https://github.com/KarlieHe/book-store-frontend/blob/6a9c5869a02b2656059eec6e0a646485283f7871/src/assets/displays/homepage.png)
+![Homepage](src/assets/displays/homepage.png)
+
+![Order Lists](src/assets/displays/userOrderLists.png)
 
 Website URL: https://book-store-pied-psi.vercel.app/
 
